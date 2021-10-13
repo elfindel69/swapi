@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'SFDistant-Regular';
+    src: url('assets/fonts/SFDistantGalaxy.ttf') format('truetype');
+}
+
+body{
+    color:gold;
+    background-color:black;
+    font-family:SFDistant-Regular, Arial, Helvetica, sans-serif;
+}

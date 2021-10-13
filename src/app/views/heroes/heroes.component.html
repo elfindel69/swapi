@@ -1,0 +1,43 @@
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-5 fw-bold">STAR WARS Heroes</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">La liste officielle de tous les héros Star Wars &copy;.</p>
+  </div>
+</div>
+
+<div class="row-">
+
+  <div class="col-10 mx-auto">
+
+    <div class="d-flex justify-content-between mb-3">
+      <h2>Héros</h2>
+      <button class="btn btn-success btn-lg">Nouveau Héros</button>
+    </div>
+
+    <ng-container *ngIf="heroes.length > 0">
+      <div *ngFor="let hero of heroes"
+           [routerLink]="['/heroes',hero.id]" routerLinkActive="router-link-active"
+           class="card mb-3 h-100">
+        <div class="row g-0">
+            <div class="card-body">
+              <h5 class="card-title">{{hero.name}}</h5>
+              <p class="card-text">taille: {{hero.height}}</p>
+              <p class="card-text">masse: {{hero.mass}}</p>
+              <p class="card-text">couleur des cheveux: {{hero.hair_color}}</p>
+              <p class="card-text">couleur de peau: {{hero.skin_color}}</p>
+              <p class="card-text">couleur des yeux: {{hero.eye_color}}</p>
+              <p class="card-text">année de naissance: {{hero.birth_year}}</p>
+              <p class="card-text">genre: {{hero.gender}}</p>
+              <p class="card-text">
+                <small class="text-muted">
+                  Créé le {{hero.created|date:"dd/MM/yyyy"}}, dernière modification : {{hero.edited|date:"dd/MM/yyyy"}}
+                </small>
+              </p>
+            </div>
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+</div>
+

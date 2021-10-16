@@ -9,13 +9,18 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService,private router:Router) { }
+    email: string;
+    password: string;
+  constructor(private authService: AuthService,private router:Router) {
+      this.email ='elfindel69@gmail.com';
+      this.password ='azerty';
+  }
 
   ngOnInit(): void {
   }
 
   onClickLogin() {
-    this.authService.login().then(() => {
+    this.authService.login(this.email,this.password).then(() => {
       this.router.navigateByUrl("heroes");
     });
   }

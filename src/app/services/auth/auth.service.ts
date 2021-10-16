@@ -5,13 +5,20 @@ import {BehaviorSubject} from "rxjs";
   providedIn: 'root'
 })
 export class AuthService {
-  token: BehaviorSubject<boolean>
+  token: BehaviorSubject<boolean>;
+  email:string;
+  password:string;
   constructor() {
-    this.token = new BehaviorSubject<boolean>(false);
+      this.email ='elfindel69@gmail.com';
+      this.password ='azerty';
+      this.token = new BehaviorSubject<boolean>(false);
   }
 
-  login():Promise<boolean> {
-     return new Promise<boolean>((res, rej)=>{ this.token.next(true); res(true)});
+  login(email:string,password:string):Promise<boolean> {
+      if(this.email === email && this.password === password){
+          return new Promise<boolean>((res, rej)=>{ this.token.next(true); res(true)});
+      }
+      return new Promise<boolean>((res, rej)=>{ this.token.next(false); res(false)});
   }
 
   logout():Promise<void>{

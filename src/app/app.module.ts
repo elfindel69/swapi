@@ -11,6 +11,7 @@ import { LoginComponent } from './views/login/login.component';
 import {HttpClientModule} from "@angular/common/http";
 import {HeroService} from "./services/hero/hero.service";
 import {AuthService} from "./services/auth/auth.service";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import {AuthService} from "./services/auth/auth.service";
   imports: [
     BrowserModule,
     AppRoutingModule,
-      HttpClientModule
+      HttpClientModule,
+      FormsModule,
+      ReactiveFormsModule
   ],
   providers: [ HeroService,
       AuthService],

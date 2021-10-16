@@ -14,7 +14,8 @@ import {AuthService} from "./services/auth/auth.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ErrorsFormComponent } from './components/errors-form/errors-form.component';
 import { HeroesFormComponent } from './components/heroes-form/heroes-form.component';
-import { AddHeroesComponent } from './views/add-heroes/add-heroes.component';
+import { AddHeroComponent } from './views/add-hero/add-hero.component';
+import { EditHeroComponent } from './views/edit-hero/edit-hero.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AddHeroesComponent } from './views/add-heroes/add-heroes.component';
     LoginComponent,
       ErrorsFormComponent,
       HeroesFormComponent,
-      AddHeroesComponent
+      AddHeroComponent,
+      EditHeroComponent
   ],
   imports: [
     BrowserModule,

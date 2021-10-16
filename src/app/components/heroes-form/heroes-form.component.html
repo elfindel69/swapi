@@ -1,1 +1,120 @@
-<p>heroes-form works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmitForm()">
+    <div class="form-floating mb-3">
+
+        <input type="text"
+               class="form-control"
+               id="name"
+               placeholder="nom du hero"
+               [(ngModel)]="hero.name"
+               formControlName="name">
+        <label for="name">Nom du héro</label>
+        <app-errors-form
+            [control]="form.controls.name"
+            controlLabel="Nom du héro"
+        ></app-errors-form>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number"
+               class="form-control"
+               id="height"
+               [(ngModel)]="hero.height"
+               formControlName="height">
+        <label for="height">Taille du héro</label>
+        <app-errors-form
+            [control]="form.controls.description"
+            controlLabel="Taille du héro"
+        ></app-errors-form>
+
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number"
+               class="form-control"
+               id="mass"
+               [(ngModel)]="hero.mass"
+               formControlName="mass">
+        <label for="mass">Masse du héro</label>
+        <app-errors-form
+            [control]="form.controls.mass"
+            controlLabel="Date de modification"
+        ></app-errors-form>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="text"
+               class="form-control"
+               id="hair_color"
+               placeholder="couleur des cheveux"
+               [(ngModel)]="hero.hair_color"
+               formControlName="hair_color">
+        <label for="hair_color">Couleur des cheveux</label>
+        <app-errors-form
+            [control]="form.controls.hair_color"
+            controlLabel="Couleur des cheveux"
+        ></app-errors-form>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="text"
+               class="form-control"
+               id="skin_color"
+               placeholder="couleur de peau"
+               [(ngModel)]="hero.skin_color"
+               formControlName="skin_color">
+        <label for="skin_color">Couleur de peau</label>
+        <app-errors-form
+            [control]="form.controls.skin_color"
+            controlLabel="Couleur de peau"
+        ></app-errors-form>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="text"
+               class="form-control"
+               id="eye_color"
+               placeholder="couleur des yeux"
+               [(ngModel)]="hero.eye_color"
+               formControlName="eye_color">
+        <label for="eye_color">Couleur des yeux</label>
+        <app-errors-form
+            [control]="form.controls.eye_color"
+            controlLabel="Couleur des yeux"
+        ></app-errors-form>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text"
+               class="form-control"
+               id="birth_year"
+               placeholder="année de naissance BBY/ABY"
+               [(ngModel)]="hero.birth_year"
+               formControlName="birth_year">
+        <label for="birth_year">Année de naissance BBY/ABY</label>
+        <app-errors-form
+            [control]="form.controls.birth_year"
+            controlLabel="Année de naissance"
+        ></app-errors-form>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text"
+               class="form-control"
+               id="gender"
+               placeholder="genre du héro"
+               [(ngModel)]="hero.gender"
+               formControlName="gender">
+        <label for="gender">Genre du héro</label>
+        <app-errors-form
+            [control]="form.controls.gender"
+            controlLabel="Genre du héro"
+        ></app-errors-form>
+    </div>
+    <div class="row col-6 mx-auto">
+        <button class="btn btn-primary btn-lg"
+                [disabled]="form.invalid"
+                type="submit"
+        >
+            {{submitLabel}}
+        </button>
+        <a routerLink="heroes" routerLinkActive="active" class="btn btn-outline-dark my-2">RETOUR</a>
+    </div>
+</form>
+
+

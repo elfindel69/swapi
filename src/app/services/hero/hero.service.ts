@@ -25,14 +25,29 @@ export class HeroService {
   }
 
    getHeroById(id:number):Promise<Hero> {
-     return this.httpClient.get("https://swapi.dev/api/people/"+id)
+    /* return this.httpClient.get("https://swapi.dev/api/people/"+id)
       .pipe(map((heroAsJSON:any) => Hero.fromJSON(heroAsJSON)))
-      .toPromise();
-  }
+      .toPromise();*/
+       return new Promise<Hero>(
+           (res, rej) => {
+
+               const heroes = this.heroes.getValue();
+               console.log(heroes);
+               for (const hero of heroes) {
+                   console.log(hero);
+                   if (hero.id === id) {
+                       console.log(hero);
+                       res(hero);
+                       break;
+                   }
+               }
+           })
+
+   }
 
     save(hero: Hero) :Promise<any>{
         const heroes = this.heroes.getValue();
-        hero.id = heroes.length;
+        hero.id = heroes.length+1;
         heroes.push(hero);
         this.heroes.next(heroes);
         return new Promise<void>((res) => {res()})

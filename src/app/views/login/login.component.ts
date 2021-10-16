@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth/auth.service";
 import {Router} from "@angular/router";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -19,9 +20,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClickLogin() {
-    this.authService.login(this.email,this.password).then(() => {
-      this.router.navigateByUrl("heroes");
-    });
-  }
+    OnSubmitLoginForm(form:NgForm):void {
+        if(form.valid) {
+            this.authService.login(this.email,this.password).then(() => {
+                this.router.navigateByUrl("heroes");
+            });
+        }
+    }
 }

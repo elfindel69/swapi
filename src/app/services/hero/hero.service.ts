@@ -29,4 +29,39 @@ export class HeroService {
       .pipe(map((heroAsJSON:any) => Hero.fromJSON(heroAsJSON)))
       .toPromise();
   }
+
+    save(hero: Hero) :Promise<any>{
+        const heroes = this.heroes.getValue();
+        hero.id = heroes.length;
+        heroes.push(hero);
+        this.heroes.next(heroes);
+        return new Promise<void>((res) => {res()})
+
+    }
+
+    update(heroEdited: Hero) :Promise<any> {
+        const heroes = this.heroes.getValue();
+
+        for (const[index, hero] of heroes.entries()) {
+            if(hero.id === heroEdited.id){
+                heroes[index] = heroEdited;
+                this.heroes.next(heroes);
+                break;
+            }
+        }
+        return new Promise<void>((res) => {res()})
+    }
+
+
+    delete(id: number) {
+        const heroes = this.heroes.getValue();
+        for (const[index, hero] of heroes.entries()) {
+            if(hero.id === id){
+                heroes.splice(index,1);
+                this.heroes.next(heroes);
+                break;
+            }
+        }
+        return new Promise<void>((res) => {res();})
+    }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Hero} from "../../../models/hero.model";
 import {HeroService} from "../../services/hero/hero.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-single-hero',
@@ -11,11 +11,17 @@ import {ActivatedRoute} from "@angular/router";
 export class SingleHeroComponent implements OnInit {
 
   hero: Hero|undefined;
-  constructor(private heroService:HeroService,private route:ActivatedRoute) { }
+  constructor(private heroService:HeroService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params.id;
+    const id = Number.parseInt(this.route.snapshot.params.id);
     this.heroService.getHeroById(id).then((hero:Hero)=>this.hero = hero);
   }
 
+    onClickDeleteBtn() {
+        if(this.hero){
+
+            this.heroService.delete(this.hero.id).then(()=>this.router.navigateByUrl('heroes'));
+        }
+    }
 }
